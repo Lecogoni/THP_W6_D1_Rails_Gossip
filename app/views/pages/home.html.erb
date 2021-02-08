@@ -3,10 +3,8 @@
 
   <div>
     <h3>Welcome <%= params[:name] %> sur The Gossip Project</h3>
-  </div> 
+  </div>
 
-
-    
   <div>
     <table>
       <thead>
@@ -23,8 +21,6 @@
             <td><%= gossip.content %></td>
             <td><%= link_to "show", gossip %></td>
 
-
-      
           </tr>
         <% end %>
       </tbody>

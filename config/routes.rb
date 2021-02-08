@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #get'/:name', to: 'pages#home
   
   get'/gossips', to: 'gossip#index'
-  get'/gossip/:id', to: 'gossip#show'
+  get'/gossip/gossip:id', to: 'gossips#show'
 
   get'/team', to: 'team#team'
   get'/contact', to: 'team#contact'
