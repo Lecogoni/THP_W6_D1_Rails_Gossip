@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAKA,AAAA,CAAC,AAAA,CACC,eAAe,CAAE,IAAI,CACrB,KAAK,CAAE,OAAO,CACf,AACD,AAAA,CAAC,AAAA,MAAM,AAAA,CACL,KAAK,CAAE,OAAO,CACf",
+    "sources": [
+        "../app/assets/stylesheets/team.scss"
+    ],
+    "names": [],
+    "file": "teammin.css"
+}
