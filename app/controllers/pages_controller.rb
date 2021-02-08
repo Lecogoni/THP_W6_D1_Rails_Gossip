@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
 
-    attr_accessor :first_name
-
     def home
+      @gossips = Gossip.all
     end
 
 end

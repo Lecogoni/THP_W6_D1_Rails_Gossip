@@ -1,1 +1,36 @@
-<h1>Welcome sur The Gossip Project</h1>
+<div class="container">
+
+
+  <div>
+    <h3>Welcome <%= params[:name] %> sur The Gossip Project</h3>
+  </div> 
+
+
+    
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Author First_name</th>
+          <th>Gossip Title</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @gossips.each do |gossip| %>
+          <tr>
+            <td><%= gossip.user.first_name %></td>
+            <td><%= gossip.content %></td>
+            <td><%= link_to "show", gossip %></td>
+
+
+      
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+

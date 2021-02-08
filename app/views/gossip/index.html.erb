@@ -1,0 +1,11 @@
+
+<table>
+    <tbody>
+      <% @gossips.each do |gossip| %>
+        <tr>
+          <td><%= gossip.title %></td>
+          <td><%= gossip.user %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

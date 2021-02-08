@@ -6,4 +6,5 @@ class Gossip < ApplicationRecord
 
   has_many :coms
   has_many :likes
+
 end
