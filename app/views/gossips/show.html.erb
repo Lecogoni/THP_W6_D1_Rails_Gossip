@@ -1,4 +1,21 @@
-<div>
-  <h2><%= @gossip.title%></h2>
-  <h3><%= @gossip.content%></h3>
+<div class="container">
+  <p>
+    <h2><%= @gossip.title%></h2>
+  </p>
+  <p>
+    <h3><%= @gossip.content%></h3>
+  </p>
+
+  <p>
+    <h5>create at : <%= @gossip.created_at%></h5>
+  </p>
+
+  <p>
+    <h2>created by : <%= @gossip.user.first_name%>
+    <%= @gossip.user.last_name%>
+    <%= link_to 'Show', user_path(@gossip.user.id) %>
+    </h2>
+  </p>
+
+  <%= link_to 'Back', root_path %>
 </div>
