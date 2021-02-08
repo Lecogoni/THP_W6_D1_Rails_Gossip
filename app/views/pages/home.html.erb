@@ -5,27 +5,26 @@
     <h3>Welcome <%= params[:name] %> sur The Gossip Project</h3>
   </div>
 
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>Author First_name</th>
-          <th>Gossip Title</th>
-        </tr>
-      </thead>
+  
 
-      <tbody>
-        <% @gossips.each do |gossip| %>
-          <tr>
-            <td><%= gossip.user.first_name %></td>
-            <td><%= gossip.content %></td>
-            <td><%= link_to "show", gossip %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
+  <div class="row">
+    <% @gossips.each do |gossip| %>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text"><%= gossip.content %></p>
+          <p class="card-text">created by : <%= gossip.user.first_name %> <%= gossip.user.last_name %></p>
+          <button type="button" class="btn btn-warning"><%= link_to "show", gossip %></button>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
+
+
+
+
 
 </div>
 
