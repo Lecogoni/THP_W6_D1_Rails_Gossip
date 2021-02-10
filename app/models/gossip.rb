@@ -7,4 +7,7 @@ class Gossip < ApplicationRecord
   has_many :coms
   has_many :likes
 
+  validates :title, :content, presence: true 
+  validates :title, length: { minimum: 3, maximum: 14 } 
+
 end

@@ -1,15 +1,16 @@
 <div class="container">
 
 
-  <div>
+  <div class="page_header">
     <h3>Welcome <%= params[:name] %> sur The Gossip Project</h3>
   </div>
-
-  
+  <div>
+    <h4><button type="button" class="btn btn-primary"><%= link_to "new gossip", new_gossip_path %></button></h4>
+  </div>
 
   <div class="row">
     <% @gossips.each do |gossip| %>
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-md-4">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title"><%= gossip.title %></h5>

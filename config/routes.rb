@@ -5,16 +5,14 @@ Rails.application.routes.draw do
   resources :users
   
   root to: 'pages#home'
-  #get'/:name', to: 'pages#home
   
-  #get'/gossips', to: 'gossip#index'
-  get'/gossip/gossip:id', to: 'gossips#show'
-
-  get'/user/user:id', to: 'users#show'
-
   get'/team', to: 'team#team'
   get'/contact', to: 'team#contact'
-  
-  get '/welcome/:name', to: 'pages#welcome'
+
+  get '/welcome/(:name)', to: 'pages#welcome'
+
+  # routes inutiles du fait de resources gossips et users présents
+  get'/gossip/gossip:id', to: 'gossips#show'
+  get'/user/user:id', to: 'users#show'
 
 end

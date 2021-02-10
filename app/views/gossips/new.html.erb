@@ -1,0 +1,75 @@
+<div class="container">
+
+  <div class="page_header">
+    <h3>Create your Gossip</h3>
+  </div>
+
+  <div>
+
+    
+    
+    <% if @gossip.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+      <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+   
+
+
+  <%= form_tag gossips_path, method: "post" do %>
+
+      <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <div >
+          <%= text_field_tag 'title', @gossip.title, class: "form-control" %>
+        </div>
+        <div id="emailHelp" class="form-text">Title must be between 3 and 14 caracters</div>    
+      </div>
+
+      <div class="mb-3">
+        <label for="Content" class="form-label">Content</label>
+        <div >
+          <%= text_area_tag 'content', @gossip.content, class: "form-control"  %>
+        </div> 
+      </div>
+      <%= submit_tag "Create Gossip", class: "btn btn-primary" %>
+      
+     
+  <% end %>
+
+       
+       
+<%
+=begin%>
+ 
+
+    <%= form_tag gossips_path, method: "post" do %>
+
+      <%= label_tag 'Title' %>
+      <%= text_field_tag 'title', @gossip.title %>
+      <br /> <br />
+
+      <%= label_tag 'content' %>
+      <%= text_area_tag 'content', @gossip.content %>
+      <br /> <br />
+
+    <!-- 
+      <%= label_tag 'Author' %>
+      <%= text_area_tag 'user', @gossip.user %>
+      <br /> <br />
+    -->
+
+      <%= submit_tag "Create Gossip" %>
+
+    <% end %>  
+ 
+<%
+=end%>
+
+  </div>
+</div>
