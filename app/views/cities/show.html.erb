@@ -1,0 +1,34 @@
+
+<!-- City info-->
+<div class="container">
+  <h4>City :</h4>
+  <div class="card">
+    <h1><%= @city.name %></h1>
+    <h3><%= @city.zip_code %></h3>
+  </div>
+</div>
+
+<!-- Gossip related to the city-->
+
+<div class="container">
+  <h4>List of Gossips written by Users living in this city :</h4>
+  <% @city_users = @city.users %>
+  
+  <div class="row">
+    <% @city_users.each do |user| %>
+    <% @user_gossips = user.gossips %>
+        <% @user_gossips.each do |gossip| %>
+        <div class="col-sm-6 col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= gossip.title %></h5>
+              <p class="card-text"><%= gossip.content %></p>
+              <p class="card-text"> written by: <%= user.first_name %> <%= user.last_name %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

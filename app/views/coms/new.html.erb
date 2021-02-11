@@ -1,0 +1,17 @@
+
+<div class="container">
+
+  <%= form_tag coms_path, method: "post" do %>
+
+      <div class="mb-3">
+        <label for="content" class="form-label">Content : </label>
+        <div >
+          <%= text_field_tag 'content', @com.content, class: "form-control" %>
+        </div>   
+      </div>
+
+      <%= submit_tag "Create comment", class: "btn btn-primary" %>
+      
+  <% end %>
+
+</div>

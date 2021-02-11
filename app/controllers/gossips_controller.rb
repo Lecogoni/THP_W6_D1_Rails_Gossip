@@ -6,7 +6,8 @@ class GossipsController < ApplicationController
 
   def show
     @gossip = Gossip.find(params[:id])
-  end
+    @coms = Com.all # rajout pour le systeme de commentaire
+  end 
 
   def new
     @gossip = Gossip.new
@@ -26,6 +27,27 @@ class GossipsController < ApplicationController
       #flash[:error] = "c'est raté"
       render :new
     end
+  end
+
+
+  def edit
+    @gossip = Gossip.find(params[:id])
+  end
+
+  def update
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(title: params[:title], content: params[:content])
+      redirect_to gossip_path
+    else
+      render :edit
+    end
+  end
+
+
+  def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to root_path
   end
 
 end

@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :gossips
-  resources :users
+  resources :cities
+
+  resources :users do
+    resources :gossips
+  end
   
+  resources :gossips do
+    resources :coms
+  end
+ 
+  
+
   root to: 'pages#home'
   
   get'/team', to: 'team#team'

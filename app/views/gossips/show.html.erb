@@ -1,23 +1,54 @@
 <div class="container">
-  <p>
-    <h2><%= @gossip.title%></h2>
-  </p>
-  <p>
-    <h3><%= @gossip.content%></h3>
-  </p>
 
-  <p>
-    <h5>create at : <%= @gossip.created_at%></h5>
-  </p>
-
-  <p>
-    <h2>created by : <%= @gossip.user.first_name%>
-    <%= @gossip.user.last_name%>
-    <button type="button" class="btn btn-warning"><%= link_to 'Show', user_path(@gossip.user.id) %></button>
-    
-    </h2>
-  </p>
-
-  <button type="button" class="btn btn-danger"><%= link_to 'Back', root_path %></button>
-  
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title"><%= @gossip.title%></h3>
+      <p><small class="text-muted">create at : <%= @gossip.created_at%> 
+      by <%= @gossip.user.first_name.capitalize%> <%= @gossip.user.last_name.upcase%> 
+      from <%= @gossip.user.city.name%></small></p>
+      <p class="card-text"><%= @gossip.content%></p>
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-success"><%= link_to 'Edit gossip', edit_gossip_path %></button>
+        <button type="button" class="btn btn-warning"><%= link_to 'See Author', user_path(@gossip.user.id) %></button>
+        <button type="button" class="btn btn-primary"><%= link_to 'View the city', city_path(@gossip.user.city.id) %></button>
+        <a href="<% gossip_path%>" class="btn btn-danger" data-confirm="Are you sur ?" data-method="DELETE">Delete gossip</a>
+    </div>
+  </div>
 </div>
+
+
+<div class="container">
+    <button type="button" class="btn btn-danger"><%= link_to 'Back', root_path %></button>
+</div>
+
+<div class="container">
+
+  <h2>Comments</h2>
+  <% @gossip.coms.each do |com| %>
+    <p>
+      <strong>Comment:</strong>
+      <%= com.content %>
+    </p>
+
+  <% end %>
+
+
+</div>
+
+<div class="container">
+
+  <h2>Add a comment:</h2>
+  <%= form_with model: [ @gossip, @gossip.coms.build ] do |form| %>
+    <p>
+      <%= form.label :content %><br>
+      <%= text_field 'content', :content, class: "form-control" %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+
+</div>
+
+

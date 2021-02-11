@@ -34,9 +34,12 @@ puts "10 City"
     email: Faker::Internet.email,
     age: Faker::Number.between(from: 10, to: 50),
     city_id: City.all.sample.id
+    password: "1234"
   )
 end
 puts "10 User"
+
+# user = User.create(first_name: "nico", last_name: "nico", description: "un jeune qui n'en veut, pass 123", email: "nico@nico.com", age: 40, city_id: 9)
 
 20.times do
   Gossip.create(

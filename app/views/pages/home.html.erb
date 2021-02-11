@@ -15,8 +15,18 @@
         <div class="card-body">
           <h5 class="card-title"><%= gossip.title %></h5>
           <p class="card-text"><%= gossip.content %></p>
-          <p class="card-text">created by : <%= gossip.user.first_name %> <%= gossip.user.last_name %></p>
+          <p class="card-text">
+            <ul>
+              <li>created by : <%= gossip.user.first_name %> <%= gossip.user.last_name %></li>
+              <li>from : <%= gossip.user.city.name %></li>
+              <li>at : <%= gossip.created_at %></li>
+              <li>number of comment : <%= gossip.coms.size %></li>
+            </ul>
+          </p>
+        </div>
+        <div class="card-footer">
           <button type="button" class="btn btn-warning"><%= link_to "show", gossip %></button>
+          <button type="button" class="btn btn-success"><%= link_to 'City', city_path(gossip.user.city.id) %></button>
         </div>
       </div>
     </div>

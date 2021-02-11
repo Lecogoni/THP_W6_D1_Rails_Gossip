@@ -1,11 +1,13 @@
 <div class="container">
 
   <div class="page_header">
-    <h3>Create your Gossip</h3>
+    <h3>Modify Gossip</h3>
   </div>
 
   <div>
-
+<%
+=begin%>
+ 
     <% if @gossip.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
@@ -16,15 +18,16 @@
       </ul>
     </div>
     <% end %>
-   
-  <%= form_tag gossips_path, method: "post" do %>
+    
+<%
+=end%>
+  <%= form_tag gossip_path, method: "patch" do %>
 
       <div class="mb-3">
         <label for="Title" class="form-label">Title</label>
         <div >
           <%= text_field_tag 'title', @gossip.title, class: "form-control" %>
-        </div>
-        <div id="emailHelp" class="form-text">Title must be between 3 and 14 caracters</div>    
+        </div>   
       </div>
 
       <div class="mb-3">
@@ -33,7 +36,7 @@
           <%= text_area_tag 'content', @gossip.content, class: "form-control"  %>
         </div> 
       </div>
-      <%= submit_tag "Create Gossip", class: "btn btn-primary" %>
+      <%= submit_tag "Update Gossip", class: "btn btn-primary" %>
       
   <% end %>
 
