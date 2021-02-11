@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :cities
   resources :gossips
+  resources :coms
   
   resources :users do
     resources :gossips

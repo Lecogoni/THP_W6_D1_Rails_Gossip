@@ -13,7 +13,7 @@
     <div class="col-sm-6 col-md-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><%= gossip.title %></h5>
+          <h5 class="card-title"><%= gossip.title %><% if gossip.coms.size != 0 %> <span class="badge rounded-pill bg-info text-dark"><%= gossip.coms.size %></span><% end %></h5>
           <p class="card-text"><%= gossip.content %></p>
           <p class="card-text">
             <ul>
