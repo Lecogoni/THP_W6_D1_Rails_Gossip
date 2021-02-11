@@ -2,3 +2,5 @@
 
 <h2>BIENVENUE <%= params[:name] %> !</h2>
 <p>Ici c'est notre super site de potins, il est chouette, non ?</p>
+
+<h2>Bienvenue <%= User.find_by(id: session[:user_id]).first_name %> !</h2>

@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :cities
-
+  resources :gossips
+  
   resources :users do
     resources :gossips
   end
@@ -10,7 +11,8 @@ Rails.application.routes.draw do
   resources :gossips do
     resources :coms
   end
- 
+
+  resources :sessions, only: [:new, :create, :destroy]
   
 
   root to: 'pages#home'

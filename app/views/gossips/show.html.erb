@@ -9,10 +9,10 @@
       <p class="card-text"><%= @gossip.content%></p>
     </div>
     <div class="card-footer">
-        <button type="button" class="btn btn-success"><%= link_to 'Edit gossip', edit_gossip_path %></button>
-        <button type="button" class="btn btn-warning"><%= link_to 'See Author', user_path(@gossip.user.id) %></button>
-        <button type="button" class="btn btn-primary"><%= link_to 'View the city', city_path(@gossip.user.city.id) %></button>
-        <a href="<% gossip_path%>" class="btn btn-danger" data-confirm="Are you sur ?" data-method="DELETE">Delete gossip</a>
+        <button type="button" class="btn-sm btn-success"><%= link_to 'Edit gossip', edit_gossip_path %></button>
+        <button type="button" class="btn-sm btn-warning"><%= link_to 'See Author', user_path(@gossip.user.id) %></button>
+        <button type="button" class="btn-sm btn-primary"><%= link_to 'View the city', city_path(@gossip.user.city.id) %></button>
+        <a href="<% gossip_path%>" class="btn-sm btn-danger" data-confirm="Are you sur ?" data-method="DELETE">Delete gossip</a>
     </div>
   </div>
 </div>

@@ -1,0 +1,24 @@
+
+
+<div class="container">
+
+  <h1>login page</h1>
+  <%= form_tag sessions_path, method: "post" do %>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <div class= "form-control">
+          <%= text_field_tag 'email' %>
+        </div>  
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class= "form-control">
+          <%= text_field_tag 'password' %>
+        </div> 
+      </div>
+      <%= submit_tag "Login", class: "btn btn-primary" %>
+      
+  <% end %>
+</div>  
