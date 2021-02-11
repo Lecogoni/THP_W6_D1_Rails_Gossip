@@ -1,8 +1,8 @@
 class GossipsController < ApplicationController
 
+  before_action :authenticate_user, only: [:new, :create]
  
-  
-  
+  add_flash_types :warning, :info, :danger, :success
 
   def index
     @gossips = Gossip.all
@@ -17,18 +17,13 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new
   end
 
-  add_flash_types :warning, :info, :danger, :success
-
   def create
-    # recupere le user Anonymous
-    user = User.find(21)
-    @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: user.id)
+  
+    @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: session[:user_id])
 
     if @gossip.save
-      #flash[:alert] = 
       redirect_to root_path, success: "Gossip enregistré!"
     else
-      #flash[:error] = "c'est raté"
       render :new
     end
   end
@@ -38,6 +33,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
   end
 
+  
   def update
     @gossip = Gossip.find(params[:id])
     if @gossip.update(title: params[:title], content: params[:content])
@@ -53,5 +49,15 @@ class GossipsController < ApplicationController
     @gossip.destroy
     redirect_to root_path
   end
+
+
+  private
+
+  def authenticate_user
+    unless logged_in?
+      redirect_to new_session_path, warning: "You must login to create a Gossip"
+    end
+  end
+
 
 end

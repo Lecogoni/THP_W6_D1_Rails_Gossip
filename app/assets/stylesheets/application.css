@@ -40,3 +40,7 @@
   left: 0;
   right: 0
 }
+
+.field_form {
+  border: none;
+}

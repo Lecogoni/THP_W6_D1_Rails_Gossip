@@ -1,5 +1,7 @@
 class ComsController < ApplicationController
 
+  before_action :authenticate_user, only: [:show, :new, :create]
+
   def index
     @coms =  @gossip.coms
   end
@@ -31,6 +33,14 @@ class ComsController < ApplicationController
     def com_params
       params.require(:content, :user.id).permit(:content, :user.id)
     end
+
+
+  def authenticate_user
+    unless logged_in?
+      redirect_to new_session_path, warning: "You must login to create a Gossip"
+    end
+  end
+
 
 end
 
