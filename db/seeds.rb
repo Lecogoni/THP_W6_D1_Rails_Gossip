@@ -33,7 +33,7 @@ puts "10 City"
     description: Faker::TvShows::TwinPeaks.quote,
     email: Faker::Internet.email,
     age: Faker::Number.between(from: 10, to: 50),
-    city_id: City.all.sample.id
+    city_id: City.all.sample.id,
     password: "1234"
   )
 end

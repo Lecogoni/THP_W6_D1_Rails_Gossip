@@ -11,7 +11,8 @@ class ComsController < ApplicationController
   end
 
   def new
-    @com =  @gossip.coms.build
+    @com =  Com.new
+    @gossip = Gossip.find(params[:gossip_id])
   end
 
 
@@ -19,12 +20,14 @@ class ComsController < ApplicationController
 
 
   def create
-    puts "--------------------"
-    puts params
-    puts "--------------------"
-    user = User.find(21)
+
+    puts params[:content]
+    puts "---------------------"
+    puts params[:gossip_id]
+    puts @gossip
+    puts "---------------------"
     @gossip = Gossip.find(params[:gossip_id])
-    @com = @gossip.coms.create(content: params[:content], user_id: user.id)
+    @com = @gossip.coms.create(content: params[:content], user_id: session[:user_id])
     redirect_to gossip_path(@gossip)
   end
 

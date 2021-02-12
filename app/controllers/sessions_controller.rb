@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, success: "You are log in !"
   
     else
-      redirect_to login_path, danger: "incorrect Password / email combination"
+      redirect_to new_session_path, danger: "incorrect Password / email combination"
     end
 
   end
@@ -27,8 +27,6 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to root_path, info: "You are now log out !"
   end
-
-
 
 
 end
