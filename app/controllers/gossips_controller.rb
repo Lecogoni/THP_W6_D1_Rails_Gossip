@@ -1,6 +1,6 @@
 class GossipsController < ApplicationController
 
-  before_action :authenticate_user, only: [:new, :create, :edit, :destroy]
+  before_action :authenticate_user, only: [:new, :create]
  
   add_flash_types :warning, :info, :danger, :success
 

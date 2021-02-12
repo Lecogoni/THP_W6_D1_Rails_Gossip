@@ -1,6 +1,6 @@
 class ComsController < ApplicationController
 
-  before_action :authenticate_user, only: [:show, :new, :create, :edit]
+  before_action :authenticate_user, only: [:show, :new, :create]
 
   def index
     @coms =  @gossip.coms
@@ -14,32 +14,18 @@ class ComsController < ApplicationController
     @com =  @gossip.coms.build
   end
 
+
   add_flash_types :warning, :info, :danger, :success
 
+
   def create
-    #user = User.find(21)
+    puts "--------------------"
+    puts params
+    puts "--------------------"
+    user = User.find(21)
     @gossip = Gossip.find(params[:gossip_id])
-    @com = @gossip.coms.create(content: params[:content], user_id: session[:user_id])
+    @com = @gossip.coms.create(content: params[:content], user_id: user.id)
     redirect_to gossip_path(@gossip)
-  end
-
-  def edit
-    @com = Com.find(params[:id])
-  end
-
-  def update
-    @com = Com.find(params[:id])
-    if @com.update(content: params[:content])
-      redirect_to gossip_path
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @com = Com.find(params[:id])
-    @com.destroy
-    redirect_to gossip_path
   end
 
   private
@@ -58,9 +44,25 @@ class ComsController < ApplicationController
 
 end
 
+  # def edit
+  #   @gossip = Com.find(params[:id])
+  # end
+
+  # def update
+  #   @gossip = Com.find(params[:id])
+  #   if @gossip.update(title: params[:title], content: params[:content])
+  #     redirect_to gossip_path
+  #   else
+  #     render :edit
+  #   end
+  # end
 
 
-
+  # def destroy
+  #   @gossip = Com.find(params[:id])
+  #   @gossip.destroy
+  #   redirect_to root_path
+  # end
 
 
 

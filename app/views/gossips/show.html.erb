@@ -1,11 +1,5 @@
 <div class="container">
 
-  <% if session[:user_id] == nil %>
-    <div class="alert alert-danger" role="alert">
-      <p>You are not login ! pour ne pourrez pas créer de potins ni laisser de commentaires.</p>
-    </div>
-  <% end %>
-
   <div class="card">
     <div class="card-body">
       <h3 class="card-title"><%= @gossip.title%></h3>
@@ -15,12 +9,10 @@
       <p class="card-text"><%= @gossip.content%></p>
     </div>
     <div class="card-footer">
-          <button type="button" class="btn btn-warning"><%= link_to 'See Author', user_path(@gossip.user.id) %></button>
-          <button type="button" class="btn btn-primary"><%= link_to 'View the city', city_path(@gossip.user.city.id) %></button>  
-        <% if session[:user_id] == @gossip.user.id %>
-          <button type="button" class="btn btn-success"><%= link_to 'Edit gossip', edit_gossip_path %></button>
-          <a href="<% gossip_path%>" class="btn btn-danger" data-confirm="Are you sur ?" data-method="DELETE">Delete gossip</a>
-        <% end %>
+        <button type="button" class="btn btn-success"><%= link_to 'Edit gossip', edit_gossip_path %></button>
+        <button type="button" class="btn btn-warning"><%= link_to 'See Author', user_path(@gossip.user.id) %></button>
+        <button type="button" class="btn btn-primary"><%= link_to 'View the city', city_path(@gossip.user.city.id) %></button>
+        <a href="<% gossip_path%>" class="btn btn-danger" data-confirm="Are you sur ?" data-method="DELETE">Delete gossip</a>
     </div>
   </div>
 </div>
@@ -35,9 +27,8 @@
   <h2>Comments</h2>
   <% @gossip.coms.each do |com| %>
     <p>
-      <strong>Comment: </strong>
+      <strong>Comment:</strong>
       <%= com.content %>
-      <button type="button" class="btn-sm btn-success"><%= link_to 'Edit', edit_com_path %></button>
     </p>
 
   <% end %>
@@ -47,7 +38,7 @@
 
 <div class="container">
 
-  <h2>Add a comment :</h2>
+  <h2>Add a comment:</h2>
   <%= form_with model: [ @gossip, @gossip.coms.build ] do |form| %>
     <p>
       <%= form.label :content %><br>
